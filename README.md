@@ -3,9 +3,9 @@ Guess music challenge game between humans and AI! Customized local music dataset
 
 ### 项目简介
 "弦外之音"是一个人与AI猜音乐博弈的舞台互动游戏，支持定制本地音乐数据库和三种难度！选择Qwen-Audio-3.1-Realtime-Flash作为大模型的代表，使用websocket-client的手动请求-接收模式调用千问api接口。
-![alt text](images/001.png)
-![alt text](images/002.png)
-![alt text](images/003.png)
+![alt text](001.png)
+![alt text](002.png)
+![alt text](003.png)
 
 
 ### 环境配置
