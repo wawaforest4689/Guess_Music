@@ -1,8 +1,7 @@
 import json
 import threading
-from collections import deque
 import dash
-from dash import dcc, html, Input, Output, State, ctx  # 引入 ctx 用于判断哪个按钮被点击
+from dash import dcc, html, Input, Output, ctx  # 引入 ctx 用于判断哪个按钮被点击
 import plotly.graph_objs as go
 import websockets
 import asyncio
@@ -201,7 +200,7 @@ class Panel:
 
         cards = [card("总轮次", stats["total"], "#b388ff"),
                  card("当前人类准确率", f"{h_acc:.1f}%", "#69f0ae"),
-                 card("当前AI 准确率", f"{a_acc:.1f}%", "#ffd54f"),
+                 card("当前AI准确率", f"{a_acc:.1f}%", "#ffd54f"),
                  card("平均用时", f"{h_avg:.1f}s / {a_avg:.1f}s", "#80d8ff")]
 
         # --- 2. 准确率时序折线图 ---
@@ -281,12 +280,13 @@ class Panel:
         )
 
         # --- 6. 数据表格 ---
-        header = html.Tr([html.Th(c) for c in ["轮次", "难度", "歌曲", "人类", "AI", "人类用时", "AI用时"]])
+        header = html.Tr([html.Th(c) for c in ["轮次", "终端", "难度", "歌曲", "人类", "AI", "人类用时", "AI用时"]])
         rows = []
         for r in sorted_rounds[-8:][::-1]:
             rows.append(html.Tr(
                 [
                     html.Td(str(r["round_id"])),
+                    html.Td(r.get("player") or "—"),
                     html.Td(r.get("difficulty", "—").capitalize()),
                     html.Td(r.get("correct_song", "")),
                     html.Td(r.get("human_choice") or "—"),
